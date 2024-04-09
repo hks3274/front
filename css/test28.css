@@ -1,0 +1,60 @@
+/* test28.css */
+body{
+    margin: 0px;
+    font-size: 0.8em;
+}
+
+.container {
+    background-color: beige;
+    height: 100vh; /*여백 남는것도 다 가져감 */
+    display: flex;
+
+    /*기본방향(행 기준) */
+    /* flex-direction: row; */
+    /* flex-direction: column; */
+    
+    /*방향을 역방향으로 배치*/
+    /* flex-direction: row-reverse; */
+    /* flex-wrap: wrap; */
+    /* flex-wrap: wrap-reverse; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* justify-content: flex-end; */
+    /* justify-content: center; */
+    /* justify-content: space-around; */
+    /* justify-content: space-between; */
+    justify-content: space-evenly;
+
+    /* align-items: center; */
+    /* align-items: baseline; */
+    align-content: space-around;
+    /* align-content: space-between; */
+}
+
+.item {
+    width : 70px;
+    height: 70px;
+    border: 1px solid gray;
+    text-align: center;
+    
+}
+
+.item:nth-child(1){
+    width: 150px;
+    height: 150px;
+    line-height: 150px; 
+    /* 문자 높이 만큼 line-height를 주면 문자가 가운데로 온다 */
+}
+
+.item1 {background-color: cadetblue;}
+.item2 {background-color: rgb(148, 160, 95);}
+.item3 {background-color: rgb(129, 95, 160);}
+.item4 {background-color: rgb(160, 95, 131);}
+.item5 {background-color: rgb(160, 95, 95);}
+.item6 {background-color: rgb(160, 145, 95);}
+.item7 {background-color: rgb(19, 63, 94);}
+.item8 {background-color: rgb(55, 174, 174);}
+.item9 {background-color: rgb(48, 34, 130);}
+.item10 {background-color: rgb(137, 44, 73);}
+

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test24.html(반응형 웹사이트)</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .container {
+            width: 1000px;
+            margin: 0px auto;
+            font-size: 20px;
+        }
+
+        div {
+            background-color: #eee;
+            border: 2px solid gray;
+            font-size: 25px;
+        }
+
+        div#area {
+            width: 960px;
+            margin: 0px auto;
+            height: 350px;
+            background-color: blueviolet;
+        }
+
+        #tbl {
+            width: 960px;
+            margin: 0px auto;
+            height: 450px;
+            background-color: rgb(192, 148, 232);
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #bbb;
+            text-align: center;
+        }
+
+        div#img {
+            text-align: center;
+            margin: 10px 0px;
+            padding: 15px 0px;
+        }
+
+        /* 미디어쿼리 */
+        /* screen width >= 1024px (max-width < 1024px == max-width:1024px)*/
+        @media screen and (max-width:1024px) {
+            .container {
+                width: 700px;
+                margin: 0px auto;
+                font-size: 15px;
+            }
+
+            div {
+                background-color: #eee;
+                border: 2px solid gray;
+                font-size: 20px;
+            }
+
+            div#area {
+                width: 680px;
+                margin: 0px auto;
+                height: 200px;
+                background-color: rgb(255, 52, 170);
+            }
+
+            #tbl {
+                width: 680px;
+                margin: 0px auto;
+                height: 250px;
+                background-color: rgb(232, 148, 200);
+                border-collapse: collapse;
+            }
+
+            div#img img {
+                width: 680px;
+            }
+        }
+        /* screen width >= 768px (max-width < 768px == max-width:768px)*/
+        @media screen and (max-width:768px) {
+            .container {
+                width: 460px;
+                margin: 0px auto;
+                font-size: 12px;
+            }
+
+            div {
+                background-color: #eee;
+                border: 1px solid gray;
+                font-size: 14px;
+            }
+
+            div#area {
+                width: 460px;
+                margin: 0px auto;
+                height: 100px;
+                background-color: rgb(224, 135, 0);
+            }
+
+            #tbl {
+                width: 460px;
+                margin: 0px auto;
+                height: 380px;
+                background-color: rgb(232, 205, 148);
+                border-collapse: collapse;
+            }
+
+            div#img img {
+                width: 380px;
+            }
+        }
+
+        /* screen width >= 400px (max-width < 400px == max-width:400px)*/
+        @media screen and (max-width:400px) {
+            .container {
+                width: 260px;
+                margin: 0px auto;
+                font-size: 10px;
+            }
+
+            div {
+                background-color: #eee;
+                border: 1px solid gray;
+                font-size: 12px;
+            }
+
+            div#area {
+                width: 260px;
+                margin: 0px auto;
+                height: 80px;
+                background-color: rgb(2, 55, 247);
+            }
+
+            #tbl {
+                width: 260px;
+                margin: 0px auto;
+                height: 120px;
+                background-color: rgb(148, 186, 232);
+                border-collapse: collapse;
+            }
+
+            div#img img {
+                width: 160px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>미디어 쿼리 연습</h2>
+        <p>(반응형 웹사이트 : Responsive Web Design)</p>
+        <hr />
+        <ul>
+            <li>데스크탑 : 1024px 이상</li>
+            <li>태블릿 : 768px~1024px</li>
+            <li>모바일 : 768px 이하</li>
+        </ul>
+        <hr />
+        <div>이곳은 반응형 웹사이트를 위한 화면입니다.</div>
+        <hr />
+        <div id="area"> </div>
+        <table id="tbl">
+            <tr>
+                <th>주제</th>
+                <th>강사</th>
+                <th>장소</th>
+            </tr>
+            <tr>
+                <td>웹표준에 대해서</td>
+                <td>홍길동</td>
+                <td>그린아카데미</td>
+            </tr>
+            <tr>
+                <td>java 프로그래밍</td>
+                <td>탁민아</td>
+                <td>그린 402호</td>
+            </tr>
+        </table>
+        <hr />
+        <div id="img">
+            <img src="1.jpg" />
+        </div>
+
+    </div>
+</body>
+
+</html>
