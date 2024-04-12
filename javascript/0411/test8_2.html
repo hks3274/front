@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test8.html</title>
+    <script>
+    'use strict';
+
+    let su1 = 100;
+    console.log("su1 :" +su1);
+    {
+        console.log("su1 :" +su1);
+        let su2 = 200; //지역변수 개념으로 선언이 되어서 바깥으로는 나갈 수 없다.
+        console.log("su2 :" +su2);
+    }
+    console.log("su1 :" +su1);
+    console.log("su2 :" +su2);
+
+    </script>
+</head>
+<body>
+    <h2>본문</h2>
+</body>
+</html>
