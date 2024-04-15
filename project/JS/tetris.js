@@ -12,7 +12,7 @@ let duration = 500;
 let downInterval;
 let tempMovingItem;
 
-const BOLOKS = {
+const BLOCKS = {
     tree: [
         [[0,0],[0,1],[1,0],[1,1]],
         [],
@@ -38,6 +38,7 @@ function init() {
     for (let i = 0; i < GAME_ROWS; i++) {
         prependNewLine()
     }
+    renderBlocks();
 }
 
 
@@ -54,5 +55,12 @@ function prependNewLine() {
 }
 
 function renderBlocks(){
-
+    const { type, direction, top, left } = tempMovingItem;
+    BLOCKS[type][direction].forEach(block => {
+        const x = block[0];
+        const y = block[1];
+        console.log({palyground});
+        const targer = palyground.childNodes[y].childNodes[0].childNodes[x];
+    });
+    
 }
