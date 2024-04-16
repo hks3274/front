@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test7.html(다형성-오버라이드)</title>
+    <script>
+        'use strict'
+
+        class Shape {
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            //사각형 면적
+            getArea() {
+                return this.width * this.height;
+            }
+
+            
+        }
+        let shape = new Shape(10,20);
+        console.log("shape : ", shape);
+        console.log('사각형의 면적 : ', shape.getArea());
+        console.log('');
+
+        class ChildShape extends Shape {}
+
+        let childShape = new ChildShape(30,40);
+        console.log("childShape : ", childShape);
+        console.log("childShape 사각형의 면적 :"+childShape.getArea());
+        console.log('');
+
+        class ChildShape2 extends Shape {
+            //원 면적(폭(width)를 반지름(r)로 처리한다.)
+            getArea() {
+                return this.width * this.width * 3.14;
+            }
+        }
+
+        let childShape2 = new ChildShape2(10,20);
+        console.log("childShape : ", childShape2);
+        console.log("childShape2 원의 면적(오버라이드) :", childShape2.getArea());
+
+    </script>
+</head>
+<body>
+    <h2>다형성(오버라이드)</h2>
+</body>
+</html>
