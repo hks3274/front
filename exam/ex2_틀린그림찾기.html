@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex2.html(틀린그림찾기)</title>
+    <script>
+        'use strict'
+        const pointer = [[703,107,808,186],[717,387,749,410],[804,552,823,572],[488,608,532,640],[482,294,513,320],[610, 143, 649, 171],[461,52,491,96]];
+                        // [33, 47, 75, 101], [192, 144, 220, 173], [282, 119, 382, 178], [72, 620, 109, 639], [296, 389, 320, 407], [388, 552, 408, 569], [61, 298, 92, 318]
+        let cnt = 0;
+        let check = false;
+        let num = 100;
+        let statusTime; // 변수 추가
+
+
+        function timerStr() {
+            clearTimeout(statusTime);
+            num -= 1;
+
+            const timer = document.querySelector('.timerBox progress'); // 프로그레스 바 요소 선택
+            if (num > 0) {
+                statusTime = setTimeout(timerStr, 300);
+                timer.value = num; // 프로그레스 바의 값 업데이트
+            } else {
+                timer.value = 100; // 타이머가 0 이하로 내려가면 프로그레스 바의 값 0으로 설정
+                alert("실패");
+                location.reload();
+                return false;
+            }
+        }
+
+        function start() {
+            document.querySelector(".container").style.display = "block";
+            document.querySelector(".foot").style.display = "block";
+            document.querySelector(".content").style.display = "none";
+            check = true;
+            timerStr(); // 타이머 시작
+        }
+
+
+
+        addEventListener("click", (event) => {
+            if (check) {
+                let getX = event.offsetX;
+                let getY = event.offsetY;
+
+
+                for (let i = 0; i < pointer.length; i++) {
+                    if (pointer[i][0] <= getX && getX <= pointer[i][2] && pointer[i][1] <= getY && getY <= pointer[i][3]) {
+
+                        let newImg1 = document.createElement('img');
+                        newImg1.src = 'success.png';
+                        newImg1.style.left = (getX + 480) + "px";
+                        newImg1.style.top = (getY + 150) + "px";
+                        newImg1.style.width = "50px";
+                        newImg1.style.height = "50px";
+                        newImg1.style.position = "absolute";
+                        newImg1.style.textAlign = "center";
+
+                        let newImg2 = document.createElement('img');
+                        newImg2.src = 'success.png';
+                        newImg2.style.left = (getX+60) + "px";
+                        newImg2.style.top = (getY+150) + "px";
+                        newImg2.style.width = "50px";
+                        newImg2.style.height = "50px";
+                        newImg2.style.position = "absolute";
+                        newImg2.style.textAlign = "center";
+
+                        document.querySelector('.imgBox').appendChild(newImg1);
+                        document.querySelector('.imgBox').appendChild(newImg2);
+
+                        console.log("정답입니다.");
+                        cnt++;
+                        pointer[i].pop();
+
+                        if (cnt == 7) {
+                            alert("성공");
+                            location.reload();
+                        }
+                    } 
+                }
+                console.log(getX, getY);
+            }
+
+
+
+        });
+
+    </script>
+
+    <style>
+        body {
+            background-color: beige;
+        }
+
+        .content {
+            width: 100%;
+            text-align: center;
+            margin-top: 400px;
+        }
+
+        .title {
+            width: 100%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .imgBox,
+        .timerBox {
+            display: contents;
+            width: 100%;
+            height: 300px;
+            text-align: center;
+        }
+
+        .timer {
+            width: 900px;
+            height: 50px;
+            margin: 0px auto;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .startbtn {
+            display: absolute;
+            width: 200px;
+            height: 50px;
+            margin: 0px auto;
+            border: 2px solid #007144;
+            border-radius: 20px;
+            background-color: rgb(169, 206, 169);
+            box-shadow: 0px 5px 0px 0px #007144;
+            font-size: 1.5em;
+        }
+
+        button:hover {
+            opacity: 0.8;
+            font-size: 1.5em;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            box-shadow: 0px 0px 0px 0px #007144;
+        }
+    </style>
+</head>
+
+<body>
+    <p><br /></p>
+    <div class="content">
+        <button class="button startbtn" onclick="start()">게임시작</button>
+    </div>
+    <div class="container" style="display: none;">
+        <P class="title">틀린그림찾기</P>
+        <p style="text-align: center; width: 100%"> 오른쪽그림을 클릭해주세요.(정답은 7개입니다)</p>
+        <div class="imgBox">
+            <p><img src="img1.jpg" width="900px" height="700px"></p>
+        </div>
+        <div class="timerBox">
+            <p><progress value="100" max="100" class="timer"></progress></p>
+        </div>
+    </div>
+    <div class="foot" style="display: none;">그림출처 : <a
+            href="https://owabird.blogspot.com/2016/07/blog-post_1.html">https://owabird.blogspot.com/2016/07/blog-post_1.html</a>
+    </div>
+</body>
+
+</html>
