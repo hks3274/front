@@ -9,6 +9,67 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="paragraph.js"></script>
+    <script>
+        'use strict'
+
+        let cnt = 0;
+        let word = paragraph[cnt].split('');
+
+        $(() => {
+            $("#paragraph").html(paragraph[cnt]);
+            $("#nextText").html(paragraph[cnt + 1]);
+            $("#nextTwoText").html(paragraph[cnt + 2]);
+
+            $("#inputText").on('input', function () {
+                let userInput = $(this).val();
+                let wrongIndexes = findWrongIndexes(userInput, word);
+
+                if (wrongIndexes.length > 0) {
+                    let inputText = $(this).val().split('');
+                    let str = '';
+
+                    for (let i = 0; i < inputText.length; i++) {
+                        if (wrongIndexes.includes(i)) {
+                            str += `<span style="color: red; font-weight: bold;">${inputText[i]}</span>`;
+                        } else {
+                            str += inputText[i];
+                        }
+                    }
+                    $(this).html(str);
+                }
+            });
+
+
+            $("#inputText").on("keydown", function (event) {
+                if (event.which === 13) {
+                    event.preventDefault();
+                    cnt++;
+                    $("#paragraph").html(paragraph[cnt]);
+                    $("#nextText").html(paragraph[cnt + 1]);
+                    $("#nextTwoText").html(paragraph[cnt + 2]);
+                    $(this).val('');
+                    $(this).focus();
+                    word = paragraph[cnt].split('');
+                }
+            });
+
+            function findWrongIndexes(userInput, word) {
+                let wrongIndexes = [];
+                const minLength = Math.min(userInput.length, word.length);
+                for (let i = 0; i < minLength; i++) {
+                    if (userInput[i] !== word[i]) {
+                        wrongIndexes.push(i);
+                    }
+                }
+                return wrongIndexes;
+            }
+        });
+    </script>
+
+
+
+    </script>
 
     <style>
         body {
@@ -63,17 +124,21 @@
 </head>
 
 <body>
-    <div class="container" style="border: 0; border-radius: 50px; margin-top: 180px; background-color: rgb(255, 255, 255);">
+    <div class="container"
+        style="border: 0; border-radius: 50px; margin-top: 180px; background-color: rgb(255, 255, 255);">
         <div class="row">
             <div class="col" style="height: 450px; ">
-                <div class="mt-5" style="color: rgb(139, 181, 225); text-align: center;">
+                <div class="m-5">
+                    <p id="paragraph" style="height: 50px; padding: 10px;"></p>
+                    <input type="text" id="inputText" name="inputText" class="form-control mb-3">
+                    <p id="nextText" style=" height: 50px; padding: 10px; margin-bottom: 20px;"></p>
+                    <p id="nextTwoText" style=" height: 50px; padding: 10px;"></p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <svg class="waves" style="margin: 0;" zxmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none"
-                shape-rendering="auto">
+            <svg class="waves" style="margin: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28"
+                preserveAspectRatio="none" shape-rendering="auto">
                 <defs>
                     <path id="gentle-wave"
                         d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
@@ -87,6 +152,8 @@
             </svg>
         </div>
     </div>
+
+
 </body>
 
 </html>
