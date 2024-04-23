@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t19_fadein_out.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        'use strict'
+
+        $(()=>{
+            $('.folder1').on('click', function() {
+                $(".folder2").animate({width: "70px"},'nomal');
+                $(".folder3").animate({width: "70px"},'nomal');
+                $(".folder4").animate({width: "70px"},'nomal');
+                $(this).animate({width : "100vw"});
+            });
+
+            $('.folder2').on('click', function() {
+                $(".folder1").animate({width: "70px"},'nomal');
+                $(".folder3").animate({width: "70px"},'nomal');
+                $(".folder4").animate({width: "70px"},'nomal');
+                $(this).animate({width : "100vw"},'nomal');
+            });
+
+            $('.folder3').on('click', function() {
+                $(".folder1").animate({width: "70px"},'nomal');
+                $(".folder2").animate({width: "70px"},'nomal');
+                $(".folder4").animate({width: "70px"},'nomal');
+                $(this).animate({width : "100vw"},'nomal');
+            });
+
+            $('.folder4').on('click', function() {
+                $(".folder1").animate({width: "70px"},'nomal');
+                $(".folder2").animate({width: "70px"},'nomal');
+                $(".folder3").animate({width: "70px"},'nomal');
+                $(this).animate({width : "100vw"},'nomal');
+            });
+
+            $('.folder').on('bdlclick', function() {
+                $(".folder").animate({width: "70px"},'nomal');
+            });
+
+        });
+    </script>
+    
+
+    <style>
+        .folder {
+            height: 100vh;
+            width: 70px;
+            padding: 10px;
+            color: white;
+        }
+
+        .folder1 {
+            background-color: cadetblue;
+        }
+
+        .folder2 {
+            background-color: coral;
+        }
+
+        .folder3 {
+            background-color: darkslategray;
+        }
+
+        .folder4 {
+            background-color: goldenrod;
+        }
+
+        .folder:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: row; margin: 0;">
+        <div class="folder folder1">목<br />록<br />1</div>
+        <div class="folder folder2">목<br />록<br />2</div>
+        <div class="folder folder3">목<br />록<br />3</div>
+        <div class="folder folder4">목<br />록<br />4</div>
+    </div>
+</body>
+
+</html>
